@@ -1,0 +1,42 @@
+<?php
+
+class Bass {
+
+  // Create the progression
+  public function __construct($progression = '0', $drum_pattern = '0') {
+    $this->bassline = $this->get_bass_line($progression, $drum_pattern);
+  }
+
+  public function get_bass_line($progression = '0', $drum_pattern = '0') {
+
+    // Randomly generate a progression if one does not exist
+    if ($progression == '0') {
+      // Load the progression class
+      include_once("progression.class");
+      // Get a progression
+      $progression = new Progression();
+    }
+
+    // Randomly load a drum pattern if one does not exist
+    if ($drum_pattern == '0') {
+      // Load the drums class
+      include_once("drums.class");
+      // Get the drum patterns
+      $drum = new Drums();
+      // Load the drum patterns object into a variable
+      $drum_patterns = $drum->patterns;
+
+      // Randomly select a drum pattern
+      $selected_drum_position = $drum->random_drum_selector();
+
+      // Select a drum pattern
+      $drum_pattern = $drum_patterns[$selected_drum_position];
+    }
+
+    // Initialize our return array
+    $bassline = array();
+
+    return $bassline;
+  }
+
+}
