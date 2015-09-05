@@ -6,63 +6,72 @@
 // by 
 // Godfried Toussaint
 
-public class Bjorklund
-{
-    private ArrayList<Boolean> rhythm = new ArrayList<Boolean>();
-    int pauses, per_pulse, remainder, steps, pulses, noskip, skipXTime;
-    boolean switcher;
+class Bjorklund {
+
+  // array
+  private $rhythm = array();
+  // int
+  $pauses = '';
+  $per_pulse = '';
+  $remainder = '';
+  $steps = '';
+  $pulses = '';
+  $noskip = '';
+  $skipXTime = '';
+  // bool
+  $switcher = '';
  
-    public Bjorklund(int pulses, int steps) {
-  this.steps = steps;
-  this.pulses = pulses;
-  this.pauses = steps - pulses;
-  this.switcher = false;
-        if (this.pulses > this.pauses) {
-      this.switcher = true;
+  public function Bjorklund($pulses, $steps) {
+    $this->steps = $steps;
+    $this->pulses = $pulses;
+    $this->pauses = $steps - $pulses;
+    $this->switcher = false;
+    if ($this->pulses > $this->pauses) {
+      $this->switcher = true;
+      // XOR swap pauses and pulses
+      $this->pauses ^= $this->pulses;
+      $this->pulses ^= $this->pauses;
+      $this->pauses ^= $this->pulses;
+    }
+    $this->per_pulse = (int) Math.floor(this.pauses / this.pulses);
+    $this->remainder = this.pauses % this.pulses;
+    $this->noskip = (this.remainder == 0) ? 0 : (int) Math.floor(this.pulses / this.remainder);
+    $this->skipXTime = (this.noskip == 0) ? 0 : (int)Math.floor((this.pulses - this.remainder)/this.noskip);
+ 
+    this.buildRhythm();
+ 
+    if(this.switcher) {
       // XOR swap pauses and pulses
       this.pauses ^= this.pulses;
       this.pulses ^= this.pauses;
       this.pauses ^= this.pulses;
+    }
   }
-  this.per_pulse = (int) Math.floor(this.pauses / this.pulses);
-  this.remainder = this.pauses % this.pulses;
-  this.noskip = (this.remainder == 0) ? 0 : (int) Math.floor(this.pulses / this.remainder);
-        this.skipXTime = (this.noskip == 0) ? 0 : (int)Math.floor((this.pulses - this.remainder)/this.noskip);
- 
-  this.buildRhythm();
- 
-        if(this.switcher) {
-            // XOR swap pauses and pulses
-            this.pauses ^= this.pulses;
-            this.pulses ^= this.pauses;
-            this.pauses ^= this.pulses;
-        }
-    }
- 
-    public Bjorklund(int pulses, int steps, String expected) {
-        this(pulses, steps);
-        autorotate(expected);
-    }
- 
-    private void buildRhythm() {
-        int count = 0;
-        int skipper = 0;
-  for (int i = 1; i <= this.steps; i++) {
-      if (count == 0) {
-                this.rhythm.add(!this.switcher);
-                count = this.per_pulse;
- 
-                if (this.remainder > 0 && skipper == 0) {
-              count++;
-              this.remainder--;
-                    skipper = (this.skipXTime > 0) ? this.noskip : 0;
-                    this.skipXTime--;
-                } else {
-                    skipper--;
-                }
-      } else {
-    this.rhythm.add(this.switcher);
-    count--;
+   
+  public function Bjorklund($pulses, $steps, $expected) {
+    this(pulses, steps);
+    autorotate(expected);
+  }
+   
+      private void buildRhythm() {
+          int count = 0;
+          int skipper = 0;
+    for (int i = 1; i <= this.steps; i++) {
+        if (count == 0) {
+                  this.rhythm.add(!this.switcher);
+                  count = this.per_pulse;
+   
+                  if (this.remainder > 0 && skipper == 0) {
+                count++;
+                this.remainder--;
+                      skipper = (this.skipXTime > 0) ? this.noskip : 0;
+                      this.skipXTime--;
+                  } else {
+                      skipper--;
+                  }
+        } else {
+      this.rhythm.add(this.switcher);
+      count--;
       }
   }
     }
