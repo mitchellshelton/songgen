@@ -35,7 +35,7 @@
   $drum_pattern = $drum_patterns[0];
 
   print('<pre>');
-  print_r($drum_pattern);
+  //print_r($drum_pattern);
   print('</pre>');
      
   // Load the bass class
@@ -50,6 +50,18 @@
 // Bass
 // Melody
 // Backing
+
+// Testing Euclid
+function Euclid($m, $k) {
+  if($k == 0) {
+    return $m;
+  }
+  else {
+    return Euclid($k, $m % $k);
+  }
+}
+print Euclid(4, 6);
+
 
 ?>
 
