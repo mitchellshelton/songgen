@@ -21,7 +21,7 @@ class Bjorklund {
   // bool
   $switcher = '';
  
-  public function Bjorklund($pulses, $steps) {
+  public function __construct($pulses, $steps) {
     $this->steps = $steps;
     $this->pulses = $pulses;
     $this->pauses = $steps - $pulses;
@@ -33,24 +33,24 @@ class Bjorklund {
       $this->pulses ^= $this->pauses;
       $this->pauses ^= $this->pulses;
     }
-    $this->per_pulse = (int) Math.floor(this.pauses / this.pulses);
-    $this->remainder = this.pauses % this.pulses;
-    $this->noskip = (this.remainder == 0) ? 0 : (int) Math.floor(this.pulses / this.remainder);
-    $this->skipXTime = (this.noskip == 0) ? 0 : (int)Math.floor((this.pulses - this.remainder)/this.noskip);
+    $this->per_pulse = floor($this->pauses / $this->pulses);
+    $this->remainder = $this->pauses % $this->pulses;
+    $this->noskip = ($this->remainder == 0) ? 0 : floor($this->pulses / $this->remainder);
+    $this->skipXTime = ($this->noskip == 0) ? 0 : floor(($this->pulses - $this->remainder) / $this->noskip);
  
-    this.buildRhythm();
+    $this->buildRhythm();
  
-    if(this.switcher) {
+    if($this->switcher) {
       // XOR swap pauses and pulses
-      this.pauses ^= this.pulses;
-      this.pulses ^= this.pauses;
-      this.pauses ^= this.pulses;
+      $this->pauses ^= $this->pulses;
+      $this->pulses ^= $this->pauses;
+      $this->pauses ^= $this->pulses;
     }
   }
    
-  public function Bjorklund($pulses, $steps, $expected) {
-    this(pulses, steps);
-    autorotate(expected);
+  public function __construct($pulses, $steps, $expected) {
+    $this->Bjorklund($pulses, $steps);
+    autorotate($expected);
   }
    
       private void buildRhythm() {
