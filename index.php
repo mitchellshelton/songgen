@@ -51,6 +51,14 @@
 // Melody
 // Backing
 
+  // Load the bjorklund class
+  include_once("bjorklund.class");
+  $bjorklund = new Bjorklund(16, 4);
+  print('<pre>');
+  print_r($bjorklund->pattern);
+  print('</pre>');
+
+
 // Testing Euclid
 function Euclid($m, $k) {
   if($k == 0) {
