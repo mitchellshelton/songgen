@@ -54,7 +54,7 @@ class Progression {
   }
 
   public function music_random_key() {
-    
+
     // Create a new music theory object
     $theory = new Musictheory();
 
@@ -245,3 +245,5 @@ class Progression {
   }
 
 }
+
+?>

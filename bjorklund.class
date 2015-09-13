@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 // via https://gist.github.com/withakay/1286731
 
@@ -10,7 +10,7 @@ class Bjorklund {
 
   public function bjorklund($steps = 0, $pulses= 0) {
     $steps = round($steps);
-    $pulses = round($pulses); 
+    $pulses = round($pulses);
 
     if($pulses > $steps || $pulses == 0 || $steps == 0) {
       $this->pattern = array();
@@ -25,7 +25,7 @@ class Bjorklund {
       array_push($this->counts, (floor($divisor / $this->remainders[$level])));
       $divvalue = $divisor % $this->remainders[$level];
       array_push($this->remainders, $divvalue);
-      $divisor = $this->remainders[$level]; 
+      $divisor = $this->remainders[$level];
       $level += 1;
       if ($this->remainders[$level] <= 1) {
         break;
@@ -37,24 +37,24 @@ class Bjorklund {
     $this->build($level);
     return array_reverse($this->pattern);
   }
-  
+
   private function build($level) {
     if ($level > -1) {
       for ($i=0; $i < $this->counts[$level]; $i++) {
-        $this->build($level - 1); 
-      } 
+        $this->build($level - 1);
+      }
       if ($this->remainders[$level] != 0) {
         $this->build($level - 2);
       }
-    } 
+    }
     else if ($level == -1) {
       $passed_value = 0;
-      array_push($this->pattern, $passed_value); 
-    } 
+      array_push($this->pattern, $passed_value);
+    }
     else if ($level == -2) {
       $passed_value = 1;
-      array_push($this->pattern, $passed_value);        
-    } 
+      array_push($this->pattern, $passed_value);
+    }
   }
 
 }

@@ -36,8 +36,8 @@
 
   print '<pre>';
   print_r($drum_pattern);
-  print '</pre>';    
-     
+  print '</pre>';
+
   // Load the bass class
   include_once("bass.class");
   // Get the bassline by passing in the chord progression and selected drum pattern
