@@ -34,9 +34,9 @@
   // Select a drum pattern
   $drum_pattern = $drum_patterns[0];
 
-  print('<pre>');
-  //print_r($drum_pattern);
-  print('</pre>');
+  print '<pre>';
+  print_r($drum_pattern);
+  print '</pre>';    
      
   // Load the bass class
   include_once("bass.class");
@@ -45,32 +45,34 @@
   // Load the bass line into a variable
   $bassline = $bass->bassline;
 
-// Drums
+  print '<pre>';
+  print_r($bassline);
+  print '</pre>';
 
-// Bass
-// Melody
-// Backing
+  // Load the backing class
+  include_once("backing.class");
+  // Get the backing by passing in the chord progression and generated bassline pattern
+  $backing = new Backing($progression, $bassline);
+  // Load the backing into a variable
+  $backing_pattern = $backing->pattern;
 
-  // Load the bjorklund class
-  include_once("bjorklund.class");
-  $bjorklund = new Bjorklund(16, 4);
-  print('<pre>');
-  print_r($bjorklund->pattern);
-  print('</pre>');
+  print '<pre>';
+  print_r($backing_pattern);
+  print '</pre>';
 
+  // Load the melody class
+  include_once("melody.class");
+  // Get the melody by passing in the chord progression and generated bassline pattern
+  $melody = new Melody($progression, $bassline);
+  // Load the melody into a variable
+  $melody_one = $melody->melody_one;
+  $melody_two = $melody->melody_two;
+  $melody_three = $melody->melody_three;
 
-// Testing Euclid
-function Euclid($m, $k) {
-  if($k == 0) {
-    return $m;
-  }
-  else {
-    return Euclid($k, $m % $k);
-  }
-}
-print Euclid(4, 6);
-
+  print '<pre>';
+  print_r($melody_one);
+  print_r($melody_two);
+  print_r($melody_three);
+  print '</pre>';
 
 ?>
-
-
