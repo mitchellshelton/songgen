@@ -34,6 +34,7 @@
   // Select a drum pattern
   $drum_pattern = $drum_patterns[0];
 
+  print 'Drum Pattern';
   print '<pre>';
   print_r($drum_pattern);
   print '</pre>';
@@ -45,6 +46,7 @@
   // Load the bass line into a variable
   $bassline = $bass->bassline;
 
+  print 'Bass Line';
   print '<pre>';
   print_r($bassline);
   print '</pre>';
@@ -56,6 +58,7 @@
   // Load the backing into a variable
   $backing_pattern = $backing->pattern;
 
+  print 'Backing';
   print '<pre>';
   print_r($backing_pattern);
   print '</pre>';
@@ -70,8 +73,18 @@
   $melody_three = $melody->melody_three;
 
   print '<pre>';
+  print 'Melody One';
+  print '<pre>';
   print_r($melody_one);
+  print '</pre>';
+
+  print 'Melody Two';
+  print '<pre>';
   print_r($melody_two);
+  print '</pre>';
+
+  print 'Melody Three';
+  print '<pre>';
   print_r($melody_three);
   print '</pre>';
 
