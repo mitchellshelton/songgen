@@ -54,39 +54,19 @@ class Rhythm {
     // Get the open hihat line
     $drum_open_hihat = $drum_pattern['open_hihat'];
 
-    // Build the rhythm from drums
+    // Build the rhythm from snare and open hihat
     for($i = 0; $i < 16; $i++) {
-      if ($drum_kick['measure_one'][$i] == 1 || $drum_snare['measure_one'][$i] == 1 || $drum_open_hihat['measure_one'][$i] == 1) {
-        if ($drum_open_hihat['measure_one'][$i] == 1) {
-          $rhythm['measure_one'][$i] = 2;
-        }
-        else {
-          $rhythm['measure_one'][$i] = 1;
-        }
+      if ($drum_snare['measure_one'][$i] == 1 || $drum_open_hihat['measure_one'][$i] == 1) {
+        $rhythm['measure_one'][$i] = 2;
       }
-      if ($drum_kick['measure_two'][$i] == 1 || $drum_snare['measure_two'][$i] == 1 || $drum_open_hihat['measure_two'][$i] == 1) {
-        if ($drum_open_hihat['measure_two'][$i] == 1) {
-          $rhythm['measure_two'][$i] = 2;
-        }
-        else {
-          $rhythm['measure_two'][$i] = 1;
-        }
+      if ($drum_snare['measure_two'][$i] == 1 || $drum_open_hihat['measure_two'][$i] == 1) {
+        $rhythm['measure_two'][$i] = 2;
       }
-      if ($drum_kick['measure_three'][$i] == 1 || $drum_snare['measure_three'][$i] == 1 || $drum_open_hihat['measure_three'][$i] == 1) {
-        if ($drum_open_hihat['measure_three'][$i] == 1) {
-          $rhythm['measure_three'][$i] = 2;
-        }
-        else {
-          $rhythm['measure_three'][$i] = 1;
-        }
+      if ($drum_snare['measure_three'][$i] == 1 || $drum_open_hihat['measure_three'][$i] == 1) {
+        $rhythm['measure_three'][$i] = 2;
       }
-      if ($drum_kick['measure_four'][$i] == 1 || $drum_snare['measure_four'][$i] == 1 || $drum_open_hihat['measure_four'][$i] == 1) {
-        if ($drum_open_hihat['measure_four'][$i] == 1) {
-          $rhythm['measure_four'][$i] = 2;
-        }
-        else {
-          $rhythm['measure_four'][$i] = 1;
-        }
+      if ($drum_snare['measure_four'][$i] == 1 || $drum_open_hihat['measure_four'][$i] == 1) {
+        $rhythm['measure_four'][$i] = 2;
       }
     }
 
@@ -102,6 +82,22 @@ class Rhythm {
         $rhythm['measure_two'][$i] = 3;
         $rhythm['measure_three'][$i] = 3;
         $rhythm['measure_four'][$i] = 3;
+      }
+    }
+
+    // Build the rhythm from the kick
+    for($i = 0; $i < 16; $i++) {
+      if ($drum_kick['measure_one'][$i] == 1) {
+        $rhythm['measure_one'][$i] = 1;
+      }
+      if ($drum_kick['measure_two'][$i] == 1) {
+        $rhythm['measure_two'][$i] = 1;
+      }
+      if ($drum_kick['measure_three'][$i] == 1) {
+        $rhythm['measure_three'][$i] = 1;
+      }
+      if ($drum_kick['measure_four'][$i] == 1) {
+        $rhythm['measure_four'][$i] = 1;
       }
     }
 
