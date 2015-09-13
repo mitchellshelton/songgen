@@ -2,46 +2,25 @@
 
 class Bass {
 
-  // Create the progression
+  // Create the bassline
   public function __construct($progression = '0', $drum_pattern = '0') {
     $this->bassline = $this->get_bass_line($progression, $drum_pattern);
   }
 
   public function get_bass_line($progression = '0', $drum_pattern = '0') {
 
-    // Randomly generate a progression if one does not exist
-    if ($progression == '0') {
-      // Load the progression class
-      include_once("progression.class");
-      // Get a progression
-      $progression = new Progression();
-    }
-
-    // Randomly load a drum pattern if one does not exist
-    if ($drum_pattern == '0') {
-      // Load the drums class
-      include_once("drums.class");
-      // Get the drum patterns
-      $drum = new Drums();
-      // Load the drum patterns object into a variable
-      $drum_patterns = $drum->patterns;
-
-      // Randomly select a drum pattern
-      $selected_drum_position = $drum->random_drum_selector();
-
-      // Select a drum pattern
-      $drum_pattern = $drum_patterns[$selected_drum_position];
-    }
-
-    // Load the bjorklund class
-    include_once("bjorklund.class");
-    $bjorklund = new Bjorklund(16, 4);
-    print('<pre>');
-    print_r($bjorklund->pattern);
-    print('</pre>');
+    // Load the rhythm class
+    include_once("rhythm.class");
+    $rhythm = new Rhythm($progression, $drum_pattern);
+    $rhythm_pattern = $rhythm->pattern;
 
     // Initialize our return array
     $bassline = array();
+
+    print '<pre>';
+    print_r($rhythm_pattern);
+    print '</pre>';
+
 
     return $bassline;
   }
